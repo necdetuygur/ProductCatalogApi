@@ -9,6 +9,8 @@ using Application.Repositories.BrandRepository;
 using Persistence.Repositories.BrandRepository;
 using Application.Repositories.ColorRepository;
 using Persistence.Repositories.ColorRepository;
+using Application.Repositories.CategoryRepository;
+using Persistence.Repositories.CategoryRepository;
 
 namespace Persistence
 {
@@ -33,6 +35,10 @@ namespace Persistence
             // Color
             services.AddScoped<IColorReadRepository, ColorReadRepository>();
             services.AddScoped<IColorWriteRepository, ColorWriteRepository>();
+
+            // Category
+            services.AddScoped<ICategoryReadRepository, CategoryReadRepository>();
+            services.AddScoped<ICategoryWriteRepository, CategoryWriteRepository>();
         }
     }
 }
