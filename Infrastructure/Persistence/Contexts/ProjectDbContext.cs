@@ -15,6 +15,7 @@ namespace Persistence.Contexts
         }
 
         public DbSet<Necdet> Necdets { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public async override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -35,6 +36,7 @@ namespace Persistence.Contexts
             base.OnModelCreating(modelBuilder);
             #region Project
             modelBuilder.ApplyConfiguration(new NecdetConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
             #endregion
         }
     }

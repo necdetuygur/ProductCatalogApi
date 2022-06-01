@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Persistence.Contexts;
 using Persistence.Repositories.NecdetRepository;
 using Application.Repositories.NecdetRepository;
+using Application.Repositories.UserRepository;
+using Persistence.Repositories.UserRepository;
 
 namespace Persistence
 {
@@ -15,6 +17,10 @@ namespace Persistence
             // Necdet
             services.AddScoped<INecdetReadRepository, NecdetReadRepository>();
             services.AddScoped<INecdetWriteRepository, NecdetWriteRepository>();
+
+            // User
+            services.AddScoped<IUserReadRepository, UserReadRepository>();
+            services.AddScoped<IUserWriteRepository, UserWriteRepository>();
         }
     }
 }
