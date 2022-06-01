@@ -26,10 +26,13 @@ heroku container:release web --app aipu
 heroku logs --tail --app aipu
 
 
-
-
-dotnet ef database update --project Presentation/Api.csproj
-dotnet run --project Presentation/Api.csproj 
+dotnet tool install --global dotnet-ef
+dotnet tool update --global dotnet-ef
+dotnet ef migrations add m1 --startup-project Presentation/Api --project Infrastructure/Persistence -c ProjectDbContext
+dotnet ef migrations add m1 -s Presentation/Api -p ProjectDbContext
+dotnet ef migrations add m1 --project Infrastructure/Persistence/Persistence.csproj
+dotnet ef database update --project Infrastructure/Persistence/Persistence.csproj
+dotnet run --project Presentation/Api/Api.csproj
 
 Server=sql.bsite.net\\MSSQL2016;Database=ecommerceproject_db2;User ID=ecommerceproject_db2;Password=Ecommerce.78645;Trusted_Connection=False;TrustServerCertificate=True
 h: sql.bsite.net\MSSQL2016
