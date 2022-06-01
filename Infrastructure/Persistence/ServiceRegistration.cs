@@ -13,6 +13,8 @@ using Application.Repositories.CategoryRepository;
 using Persistence.Repositories.CategoryRepository;
 using Application.Repositories.UseCaseRepository;
 using Persistence.Repositories.UseCaseRepository;
+using Application.Repositories.ProductRepository;
+using Persistence.Repositories.ProductRepository;
 
 namespace Persistence
 {
@@ -45,6 +47,10 @@ namespace Persistence
             // UseCase
             services.AddScoped<IUseCaseReadRepository, UseCaseReadRepository>();
             services.AddScoped<IUseCaseWriteRepository, UseCaseWriteRepository>();
+
+            // Product
+            services.AddScoped<IProductReadRepository, ProductReadRepository>();
+            services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
         }
     }
 }
