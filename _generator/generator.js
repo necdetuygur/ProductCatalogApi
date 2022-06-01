@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 generator("Necdet");
 
 function generator(table) {
