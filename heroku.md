@@ -11,13 +11,18 @@ CMD ASPNETCORE_URLS=http://*:$PORT dotnet Api.dll
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 docker rmi -f $(docker images -aq)
+docker build -t aipu:v1 .
+docker run -p 81:80 aipu:v1
 
-docker build -t api1:v1 .
-docker run -p 81:80 api1:v1
-docker tag api1:v1 registry.heroku.com/aipu/web
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker rmi -f $(docker images -aq)
+docker build -t aipu:v1 .
+docker tag aipu:v1 registry.heroku.com/aipu/web
 heroku container:login
 docker push registry.heroku.com/aipu/web
 heroku container:release web --app aipu
+
 heroku logs --tail --app aipu
 
 
