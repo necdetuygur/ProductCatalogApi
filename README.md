@@ -1,1 +1,1 @@
-# ProductCatalogApi
+[https://aipu.herokuapp.com/swagger](https://aipu.herokuapp.com/swagger)
