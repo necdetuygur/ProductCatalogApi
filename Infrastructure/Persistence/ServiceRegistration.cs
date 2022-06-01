@@ -11,6 +11,8 @@ using Application.Repositories.ColorRepository;
 using Persistence.Repositories.ColorRepository;
 using Application.Repositories.CategoryRepository;
 using Persistence.Repositories.CategoryRepository;
+using Application.Repositories.UseCaseRepository;
+using Persistence.Repositories.UseCaseRepository;
 
 namespace Persistence
 {
@@ -39,6 +41,10 @@ namespace Persistence
             // Category
             services.AddScoped<ICategoryReadRepository, CategoryReadRepository>();
             services.AddScoped<ICategoryWriteRepository, CategoryWriteRepository>();
+
+            // UseCase
+            services.AddScoped<IUseCaseReadRepository, UseCaseReadRepository>();
+            services.AddScoped<IUseCaseWriteRepository, UseCaseWriteRepository>();
         }
     }
 }

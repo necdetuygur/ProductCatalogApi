@@ -17,6 +17,7 @@ namespace Persistence.Contexts
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<UseCase> UseCases { get; set; }
 
         public async override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -44,6 +45,8 @@ namespace Persistence.Contexts
             modelBuilder.ApplyConfiguration(new ColorSeed());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new CategorySeed());
+            modelBuilder.ApplyConfiguration(new UseCaseConfiguration());
+            modelBuilder.ApplyConfiguration(new UseCaseSeed());
             #endregion
         }
     }
