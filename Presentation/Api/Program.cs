@@ -42,6 +42,7 @@ if (true)
     app.UseSwaggerUI();
 }
 
+app.UseStaticFiles(); // wwwroot
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseAuthentication();
