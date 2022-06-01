@@ -5,6 +5,8 @@ using Persistence.Repositories.NecdetRepository;
 using Application.Repositories.NecdetRepository;
 using Application.Repositories.UserRepository;
 using Persistence.Repositories.UserRepository;
+using Application.Repositories.BrandRepository;
+using Persistence.Repositories.BrandRepository;
 
 namespace Persistence
 {
@@ -21,6 +23,10 @@ namespace Persistence
             // User
             services.AddScoped<IUserReadRepository, UserReadRepository>();
             services.AddScoped<IUserWriteRepository, UserWriteRepository>();
+
+            // Brand
+            services.AddScoped<IBrandReadRepository, BrandReadRepository>();
+            services.AddScoped<IBrandWriteRepository, BrandWriteRepository>();
         }
     }
 }

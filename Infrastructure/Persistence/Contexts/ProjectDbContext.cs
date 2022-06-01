@@ -1,10 +1,8 @@
-﻿using System;
-using Domain.Common;
+﻿using Domain.Common;
 using Domain.Entities;
 using Domain.Configuration;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Persistence.Seed;
 
 namespace Persistence.Contexts
 {
@@ -16,6 +14,7 @@ namespace Persistence.Contexts
 
         public DbSet<Necdet> Necdets { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Brand> Brands { get; set; }
 
         public async override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -37,6 +36,8 @@ namespace Persistence.Contexts
             #region Project
             modelBuilder.ApplyConfiguration(new NecdetConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new BrandConfiguration());
+            modelBuilder.ApplyConfiguration(new BrandSeed());
             #endregion
         }
     }
