@@ -7,6 +7,8 @@ using Application.Repositories.UserRepository;
 using Persistence.Repositories.UserRepository;
 using Application.Repositories.BrandRepository;
 using Persistence.Repositories.BrandRepository;
+using Application.Repositories.ColorRepository;
+using Persistence.Repositories.ColorRepository;
 
 namespace Persistence
 {
@@ -27,6 +29,10 @@ namespace Persistence
             // Brand
             services.AddScoped<IBrandReadRepository, BrandReadRepository>();
             services.AddScoped<IBrandWriteRepository, BrandWriteRepository>();
+
+            // Color
+            services.AddScoped<IColorReadRepository, ColorReadRepository>();
+            services.AddScoped<IColorWriteRepository, ColorWriteRepository>();
         }
     }
 }

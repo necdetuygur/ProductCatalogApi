@@ -15,6 +15,7 @@ namespace Persistence.Contexts
         public DbSet<Necdet> Necdets { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Brand> Brands { get; set; }
+        public DbSet<Color> Colors { get; set; }
 
         public async override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -38,6 +39,8 @@ namespace Persistence.Contexts
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new BrandConfiguration());
             modelBuilder.ApplyConfiguration(new BrandSeed());
+            modelBuilder.ApplyConfiguration(new ColorConfiguration());
+            modelBuilder.ApplyConfiguration(new ColorSeed());
             #endregion
         }
     }

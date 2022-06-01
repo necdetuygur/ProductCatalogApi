@@ -12,8 +12,8 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20220601123012_brand")]
-    partial class brand
+    [Migration("20220601124148_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,7 +50,7 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5837273c-36f3-4b03-bd03-7b73491acf7b"),
+                            Id = new Guid("2d6f1aa9-e43f-4c78-b9a5-3f0b2d75cd5d"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Apple",
@@ -58,7 +58,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("99d68a2e-bb18-46f4-b6e4-fe6b864081c6"),
+                            Id = new Guid("acd08ede-3db9-4538-b9dd-f79e6eb52a9c"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Samsung",
@@ -66,7 +66,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d196e9c3-477e-4cfe-97ce-44835a51a4aa"),
+                            Id = new Guid("5474cc01-74c6-479f-b4fb-27f7aff742fb"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Nike",
@@ -74,7 +74,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("93eb75fd-dd9c-43ec-8f14-011c9c8a6d0b"),
+                            Id = new Guid("4e971269-1ae7-4930-96d0-a441d24de2ae"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Adidas",
@@ -82,7 +82,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9ef710b2-a1f6-4d9b-bccb-ec8a63ab722a"),
+                            Id = new Guid("9f94475e-c4c6-49e9-bd1d-2ca05b7669a8"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Converse",
@@ -90,7 +90,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c4eb1d8d-b764-42f5-aaad-87633e5e2fc0"),
+                            Id = new Guid("dbae74a4-bae8-4f87-976c-8760d14526a7"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "MAC",
@@ -98,7 +98,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3ac8bd80-058d-41af-a488-0b94347b8794"),
+                            Id = new Guid("aaaf0866-942c-4c9a-933e-56360ae73546"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Maybelline",
@@ -106,7 +106,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6f2b076c-16a3-4fe0-af52-08b2e897ce83"),
+                            Id = new Guid("c6149108-5195-41b8-a57d-bd73c4d01240"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "KIKO",
@@ -114,7 +114,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7237dbf9-279a-4991-8378-1bca488bcde2"),
+                            Id = new Guid("cfac4489-b286-464a-ab37-5957ff84dcfd"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "ZARA",
@@ -122,7 +122,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e75f0b2a-b61d-41b5-ba9b-6c4256ed5848"),
+                            Id = new Guid("b27bb850-3773-4d00-90fa-c347859e7101"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "LCWaikiki",
@@ -130,7 +130,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("32aa29ca-9b7d-4ab5-b5f6-c0087f553ffe"),
+                            Id = new Guid("9f23b858-dba1-44e5-b3d2-e1cef380613a"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Armani",
@@ -138,10 +138,132 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2a1b6a78-6bae-438c-bbc2-4d61f7ed54d3"),
+                            Id = new Guid("e0153709-c386-40bf-b993-880ad3c205fd"),
                             CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Prada",
+                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Color", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Colors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("aa8d8ec9-5885-41d2-8476-6be1f467cbb2"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "White",
+                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("dab548cf-2767-4b9c-a8a3-03b2ac336073"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Grey",
+                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("a4c682f4-d9e4-4c5e-ac6b-fb0f06121e40"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Brown",
+                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("ff892e17-06f3-477a-87dd-80661ccbc102"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Red",
+                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("4474c0f4-5432-42c2-b0d5-a3813910697a"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Dark Blue",
+                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("c1f759d5-eef5-4528-962a-c793946d892c"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Blue",
+                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("76898d6a-abe3-4a7b-95ae-4917f2bde413"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Purple",
+                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("0487e2c9-5cfe-4d58-a3ac-1cf54ef96450"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Pink",
+                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("025f101b-8fef-4dac-98da-252cc8579c19"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Yellow",
+                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("cbba7651-0a34-4de4-8be3-aa8166724ae9"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Black",
+                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("69b2c17b-6569-4ce2-9d60-be11e5a84594"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Orange",
+                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = new Guid("21f09bfc-d76a-41ee-b9a0-f766461d66d8"),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DeleteDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Green",
                             UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
