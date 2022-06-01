@@ -4,6 +4,9 @@ using Application.Features.Commands.UserCommands.UpdateUser;
 using Application.Features.Queries.UserQueries.GetAllUsers;
 using Application.Features.Queries.UserQueries.GetByIdUser;
 using Application.Features.Queries.UserQueries.SearchUser;
+using Application.Repositories.UserRepository;
+using Infrastructure.JwtHelpers;
+using Infrastructure.JwtModels;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,10 +20,14 @@ namespace Api.Controllers
     public class UsersController : ControllerBase
     {
         IMediator _mediator;
+        private readonly JwtSettings _jwtSettings;
+        private readonly IUserReadRepository _userReadRepository;
 
-        public UsersController(IMediator mediator)
+        public UsersController(IMediator mediator, JwtSettings jwtSettings, IUserReadRepository userReadRepository)
         {
             _mediator = mediator;
+            _jwtSettings = jwtSettings;
+            _userReadRepository = userReadRepository;
         }
 
         [HttpGet]
@@ -34,7 +41,6 @@ namespace Api.Controllers
         {
             return await _mediator.Send(new GetByIdUserQueryRequest { Id = id });
         }
-
 
         [HttpPost]
         public async Task<CreateUserCommandResponse> CreateUser([FromBody] CreateUserCommandRequest request)
@@ -54,5 +60,24 @@ namespace Api.Controllers
             return await _mediator.Send(new DeleteUserCommandRequest { Id = id });
         }
 
+        [HttpPost("GetToken")]
+        public IActionResult GetToken(UserLogins userLogins)
+        {
+            var user = _userReadRepository.Authenticate(userLogins.Email, userLogins.Password);
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+            UserTokens Token = JwtHelpers.GenTokenkey(new UserTokens()
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                GuidId = Guid.NewGuid(),
+            }, _jwtSettings);
+
+            return Ok(Token);
+
+        }
     }
 }

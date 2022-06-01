@@ -4,12 +4,12 @@ namespace Infrastructure.JwtModels
 {
     public class UserTokens
     {
-        public string Token
+        public string Name
         {
             get;
             set;
         }
-        public string UserName
+        public string Token
         {
             get;
             set;
