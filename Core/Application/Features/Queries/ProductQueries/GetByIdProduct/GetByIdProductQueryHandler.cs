@@ -32,6 +32,7 @@ namespace Application.Features.Queries.ProductQueries.GetByIdProduct
             response.Picture = Product.Picture;
             response.Description = Product.Description;
             response.CategoryId = Product.CategoryId;
+            response.UserId = Product.UserId;
             response.BrandId = Product.BrandId;
             response.ColorId = Product.ColorId;
             response.UseCaseId = Product.UseCaseId;

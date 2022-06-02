@@ -1,12 +1,6 @@
 ﻿using Application.Repositories.ProductRepository;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.Features.Queries.ProductQueries.GetAllProducts
 {
@@ -36,6 +30,7 @@ namespace Application.Features.Queries.ProductQueries.GetAllProducts
                     Picture = p.Picture,
                     Description = p.Description,
                     CategoryId = p.CategoryId,
+                    UserId = p.UserId,
                     BrandId = p.BrandId,
                     ColorId = p.ColorId,
                     UseCaseId = p.UseCaseId,
