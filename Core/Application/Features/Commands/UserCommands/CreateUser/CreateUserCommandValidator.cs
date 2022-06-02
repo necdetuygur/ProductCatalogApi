@@ -15,7 +15,7 @@ namespace Application.Features.Commands.UserCommands.CreateUser
             RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required");
             RuleFor(x => x.Surname).NotEmpty().WithMessage("Surname is required");
             RuleFor(x => x.Email).NotEmpty().WithMessage("Email is required");
-            RuleFor(x => x.Password).NotEmpty().WithMessage("Password is required");
+            RuleFor(x => x.Password).NotEmpty().WithMessage("Password is required").MaximumLength(20).MinimumLength(8);
         }
     }
 }

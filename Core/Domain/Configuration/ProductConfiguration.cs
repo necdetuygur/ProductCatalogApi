@@ -15,16 +15,16 @@ namespace Domain.Configuration
         public void Configure(EntityTypeBuilder<Product> entity)
         {
             entity.HasKey(e => e.Id);
-            entity.Property(e => e.Name).IsRequired();
+            entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
             entity.Property(e => e.Price).IsRequired();
             entity.Property(e => e.Picture).IsRequired();
-            entity.Property(e => e.Description).IsRequired();
+            entity.Property(e => e.Description).IsRequired().HasMaxLength(500);
             entity.Property(e => e.CategoryId).IsRequired();
-            entity.Property(e => e.BrandId).IsRequired();
-            entity.Property(e => e.ColorId).IsRequired();
+            //entity.Property(e => e.BrandId).IsRequired();
+            //entity.Property(e => e.ColorId).IsRequired();
             entity.Property(e => e.UseCaseId).IsRequired();
             entity.Property(e => e.IsOfferable).IsRequired();
-            // entity.Property(e => e.IsSold).IsRequired();
+            
         }
     }
 }
