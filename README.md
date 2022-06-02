@@ -1,1 +1,1 @@
-[https://aipu.herokuapp.com/swagger](https://aipu.herokuapp.com/swagger)
+git push origin --all && git push gitlab --all && exit
