@@ -34,7 +34,7 @@ namespace Application.Features.Queries.UserQueries.GetAllUsers
                     Name = p.Name,
                     Surname = p.Surname,
                     Email = p.Email,
-                    Password = p.Password
+                    // Password = p.Password
                 });
             }
             return responseList;

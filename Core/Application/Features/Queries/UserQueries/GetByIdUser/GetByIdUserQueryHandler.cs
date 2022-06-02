@@ -30,7 +30,7 @@ namespace Application.Features.Queries.UserQueries.GetByIdUser
             response.Name = User.Name;
             response.Surname = User.Surname;
             response.Email = User.Email;
-            response.Password = User.Password;
+            // response.Password = User.Password;
 
             return response;
         }
