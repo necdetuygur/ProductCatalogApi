@@ -69,7 +69,7 @@ namespace Api.Controllers
                 }
 
                 var randomName = string.Format($"{Guid.NewGuid()}{extention}");
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", randomName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", randomName);
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     await File.CopyToAsync(stream);
