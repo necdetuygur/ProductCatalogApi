@@ -22,7 +22,8 @@ namespace Application.Features.Commands.ProductCommands.UpdateProduct
             RuleFor(x => x.ColorId).NotEmpty().WithMessage("ColorId is required");
             RuleFor(x => x.UseCaseId).NotEmpty().WithMessage("UseCaseId is required");
             RuleFor(x => x.IsOfferable).NotEmpty().WithMessage("IsOfferable is required");
-            // RuleFor(x => x.IsSold).NotEmpty().WithMessage("IsSold is required");
+            RuleFor(x => x.UserId).NotEmpty().WithMessage("UserId is required");
+            
         }
     }
 }

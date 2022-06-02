@@ -51,6 +51,7 @@ namespace Application.Features.Commands.ProductCommands.UpdateProduct
             Product.UseCaseId = request.UseCaseId ?? Product.UseCaseId;
             Product.IsOfferable = request.IsOfferable ?? Product.IsOfferable;
             Product.IsSold = request.IsSold ?? Product.IsSold;
+            Product.UserId = request.UserId ?? Product.UserId;
 
             _ProductWriteRepository.Update(Product);
 

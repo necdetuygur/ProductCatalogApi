@@ -36,7 +36,8 @@ namespace Application.Features.Commands.ProductCommands.CreateProduct
                 ColorId = request.ColorId,
                 UseCaseId = request.UseCaseId,
                 IsOfferable = request.IsOfferable,
-                IsSold = request.IsSold
+                IsSold = request.IsSold,
+                UserId = request.UserId,
             };
 
             var result = await _ProductWriteRepository.AddAsync(Product);
