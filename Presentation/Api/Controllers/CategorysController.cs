@@ -1,7 +1,7 @@
 ﻿using Application.Features.Commands.CategoryCommands.CreateCategory;
 using Application.Features.Commands.CategoryCommands.DeleteCategory;
 using Application.Features.Commands.CategoryCommands.UpdateCategory;
-using Application.Features.Queries.CategoryQueries.GetAllCategorys;
+using Application.Features.Queries.CategoryQueries.GetAllCategories;
 using Application.Features.Queries.CategoryQueries.GetByIdCategory;
 using Application.Features.Queries.CategoryQueries.SearchCategory;
 using MediatR;
@@ -14,11 +14,11 @@ namespace Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategorysController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         IMediator _mediator;
 
-        public CategorysController(IMediator mediator)
+        public CategoriesController(IMediator mediator)
         {
             _mediator = mediator;
         }

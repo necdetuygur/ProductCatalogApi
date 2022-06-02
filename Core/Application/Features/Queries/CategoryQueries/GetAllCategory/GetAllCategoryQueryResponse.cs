@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.Queries.CategoryQueries.GetAllCategorys
+namespace Application.Features.Queries.CategoryQueries.GetAllCategories
 {
     public class GetAllCategoryQueryResponse
     {
