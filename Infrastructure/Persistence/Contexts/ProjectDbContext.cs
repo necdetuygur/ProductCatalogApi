@@ -12,7 +12,6 @@ namespace Persistence.Contexts
         {
         }
 
-        public DbSet<Necdet> Necdets { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Color> Colors { get; set; }
@@ -38,7 +37,7 @@ namespace Persistence.Contexts
         {
             base.OnModelCreating(modelBuilder);
             #region Project
-            modelBuilder.ApplyConfiguration(new NecdetConfiguration());
+
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new BrandConfiguration());
             modelBuilder.ApplyConfiguration(new BrandSeed());
