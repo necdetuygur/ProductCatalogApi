@@ -1,13 +1,3 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0 as build
-WORKDIR /app
-COPY . .
-RUN dotnet publish -c Release -o out
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
-WORKDIR /app
-COPY --from=build /app/out .
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet Api.dll
-
-
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 docker rmi -f $(docker images -aq)
@@ -19,7 +9,7 @@ docker rm $(docker ps -a -q)
 docker rmi -f $(docker images -aq)
 docker build -t aipu:v1 .
 docker tag aipu:v1 registry.heroku.com/aipu/web
-# heroku container:login
+heroku container:login
 docker push registry.heroku.com/aipu/web
 heroku container:release web --app aipu
 
