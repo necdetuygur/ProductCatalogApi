@@ -60,13 +60,13 @@ namespace Api.Controllers
             return await _mediator.Send(new DeleteUserCommandRequest { Id = id });
         }
 
-        [HttpPost("GetToken")]
-        public IActionResult GetToken(UserLogins userLogins)
+        [HttpPost("Login")]
+        public IActionResult Login(UserLogins userLogins)
         {
             var user = _userReadRepository.Authenticate(userLogins.Email, userLogins.Password);
             if (user == null)
             {
-                return NotFound("User not found");
+                return NotFound("User is not found");
             }
             UserTokens Token = JwtHelpers.GenTokenkey(new UserTokens()
             {
