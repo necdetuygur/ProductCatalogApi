@@ -36,23 +36,23 @@ namespace Api.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<CreateColorCommandResponse> CreateColor([FromBody] CreateColorCommandRequest request)
-        {
-            return await _mediator.Send(request);
-        }
+        //[HttpPost]
+        //public async Task<CreateColorCommandResponse> CreateColor([FromBody] CreateColorCommandRequest request)
+        //{
+        //    return await _mediator.Send(request);
+        //}
 
-        [HttpPut]
-        public async Task<UpdateColorCommandResponse> UpdateColor([FromForm] UpdateColorCommandRequest request)
-        {
-            return await _mediator.Send(request);
-        }
+        //[HttpPut]
+        //public async Task<UpdateColorCommandResponse> UpdateColor([FromForm] UpdateColorCommandRequest request)
+        //{
+        //    return await _mediator.Send(request);
+        //}
 
-        [HttpDelete("{id}")]
-        public async Task<DeleteColorCommandResponse> DeleteColor(string id)
-        {
-            return await _mediator.Send(new DeleteColorCommandRequest { Id = id });
-        }
+        //[HttpDelete("{id}")]
+        //public async Task<DeleteColorCommandResponse> DeleteColor(string id)
+        //{
+        //    return await _mediator.Send(new DeleteColorCommandRequest { Id = id });
+        //}
 
     }
 }

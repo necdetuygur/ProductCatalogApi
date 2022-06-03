@@ -36,23 +36,23 @@ namespace Api.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<CreateCategoryCommandResponse> CreateCategory([FromBody] CreateCategoryCommandRequest request)
-        {
-            return await _mediator.Send(request);
-        }
+        //[HttpPost]
+        //public async Task<CreateCategoryCommandResponse> CreateCategory([FromBody] CreateCategoryCommandRequest request)
+        //{
+        //    return await _mediator.Send(request);
+        //}
 
-        [HttpPut]
-        public async Task<UpdateCategoryCommandResponse> UpdateCategory([FromForm] UpdateCategoryCommandRequest request)
-        {
-            return await _mediator.Send(request);
-        }
+        //[HttpPut]
+        //public async Task<UpdateCategoryCommandResponse> UpdateCategory([FromForm] UpdateCategoryCommandRequest request)
+        //{
+        //    return await _mediator.Send(request);
+        //}
 
-        [HttpDelete("{id}")]
-        public async Task<DeleteCategoryCommandResponse> DeleteCategory(string id)
-        {
-            return await _mediator.Send(new DeleteCategoryCommandRequest { Id = id });
-        }
+        //[HttpDelete("{id}")]
+        //public async Task<DeleteCategoryCommandResponse> DeleteCategory(string id)
+        //{
+        //    return await _mediator.Send(new DeleteCategoryCommandRequest { Id = id });
+        //}
 
     }
 }

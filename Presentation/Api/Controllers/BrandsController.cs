@@ -36,23 +36,23 @@ namespace Api.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<CreateBrandCommandResponse> CreateBrand([FromBody] CreateBrandCommandRequest request)
-        {
-            return await _mediator.Send(request);
-        }
+        //[HttpPost]
+        //public async Task<CreateBrandCommandResponse> CreateBrand([FromBody] CreateBrandCommandRequest request)
+        //{
+        //    return await _mediator.Send(request);
+        //}
 
-        [HttpPut]
-        public async Task<UpdateBrandCommandResponse> UpdateBrand([FromForm] UpdateBrandCommandRequest request)
-        {
-            return await _mediator.Send(request);
-        }
+        //[HttpPut]
+        //public async Task<UpdateBrandCommandResponse> UpdateBrand([FromForm] UpdateBrandCommandRequest request)
+        //{
+        //    return await _mediator.Send(request);
+        //}
 
-        [HttpDelete("{id}")]
-        public async Task<DeleteBrandCommandResponse> DeleteBrand(string id)
-        {
-            return await _mediator.Send(new DeleteBrandCommandRequest { Id = id });
-        }
+        //[HttpDelete("{id}")]
+        //public async Task<DeleteBrandCommandResponse> DeleteBrand(string id)
+        //{
+        //    return await _mediator.Send(new DeleteBrandCommandRequest { Id = id });
+        //}
 
     }
 }

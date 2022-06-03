@@ -45,11 +45,11 @@ namespace Api.Controllers
             return await _mediator.Send(request);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<DeleteProductCommandResponse> DeleteProduct(string id)
-        {
-            return await _mediator.Send(new DeleteProductCommandRequest { Id = id });
-        }
+        //[HttpDelete("{id}")]
+        //public async Task<DeleteProductCommandResponse> DeleteProduct(string id)
+        //{
+        //    return await _mediator.Send(new DeleteProductCommandRequest { Id = id });
+        //}
 
         [HttpPost("PictureUpload")]
         public async Task<string> PictureUpload(IFormFile File)

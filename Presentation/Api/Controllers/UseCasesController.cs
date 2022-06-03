@@ -36,23 +36,23 @@ namespace Api.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<CreateUseCaseCommandResponse> CreateUseCase([FromBody] CreateUseCaseCommandRequest request)
-        {
-            return await _mediator.Send(request);
-        }
+        //[HttpPost]
+        //public async Task<CreateUseCaseCommandResponse> CreateUseCase([FromBody] CreateUseCaseCommandRequest request)
+        //{
+        //    return await _mediator.Send(request);
+        //}
 
-        [HttpPut]
-        public async Task<UpdateUseCaseCommandResponse> UpdateUseCase([FromForm] UpdateUseCaseCommandRequest request)
-        {
-            return await _mediator.Send(request);
-        }
+        //[HttpPut]
+        //public async Task<UpdateUseCaseCommandResponse> UpdateUseCase([FromForm] UpdateUseCaseCommandRequest request)
+        //{
+        //    return await _mediator.Send(request);
+        //}
 
-        [HttpDelete("{id}")]
-        public async Task<DeleteUseCaseCommandResponse> DeleteUseCase(string id)
-        {
-            return await _mediator.Send(new DeleteUseCaseCommandRequest { Id = id });
-        }
+        //[HttpDelete("{id}")]
+        //public async Task<DeleteUseCaseCommandResponse> DeleteUseCase(string id)
+        //{
+        //    return await _mediator.Send(new DeleteUseCaseCommandRequest { Id = id });
+        //}
 
     }
 }
