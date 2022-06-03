@@ -48,22 +48,22 @@ namespace Api.Controllers
             return await _mediator.Send(request);
         }
 
-        [HttpPut]
-        public async Task<UpdateUserCommandResponse> UpdateUser([FromForm] UpdateUserCommandRequest request)
-        {
-            return await _mediator.Send(request);
-        }
+        //[HttpPut]
+        //public async Task<UpdateUserCommandResponse> UpdateUser([FromForm] UpdateUserCommandRequest request)
+        //{
+        //    return await _mediator.Send(request);
+        //}
 
-        [HttpDelete("{id}")]
-        public async Task<DeleteUserCommandResponse> DeleteUser(string id)
-        {
-            return await _mediator.Send(new DeleteUserCommandRequest { Id = id });
-        }
+        //[HttpDelete("{id}")]
+        //public async Task<DeleteUserCommandResponse> DeleteUser(string id)
+        //{
+        //    return await _mediator.Send(new DeleteUserCommandRequest { Id = id });
+        //}
 
         [HttpPost("Login")]
         public IActionResult Login(UserLogins userLogins)
         {
-            var user = _userReadRepository.Authenticate(userLogins.Email, userLogins.Password);
+            var user = _userReadRepository.Authenticate(userLogins.Email, Application.Helpers.Md5.Hash(userLogins.Password));
             if (user == null)
             {
                 return NotFound("User is not found");

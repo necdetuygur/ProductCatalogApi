@@ -30,7 +30,7 @@ namespace Application.Features.Commands.UserCommands.CreateUser
                 Name = request.Name,
                 Surname = request.Surname,
                 Email = request.Email,
-                Password = request.Password
+                Password = Helpers.Md5.Hash(request.Password)
             };
 
             var result = await _UserWriteRepository.AddAsync(User);

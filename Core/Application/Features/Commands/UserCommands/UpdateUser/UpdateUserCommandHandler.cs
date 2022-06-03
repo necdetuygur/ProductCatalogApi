@@ -46,6 +46,8 @@ namespace Application.Features.Commands.UserCommands.UpdateUser
             User.Email = request.Email ?? User.Email;
             User.Password = request.Password ?? User.Password;
 
+            User.Password = Helpers.Md5.Hash(User.Password);
+
             _UserWriteRepository.Update(User);
 
             await _UserWriteRepository.SaveAsync();

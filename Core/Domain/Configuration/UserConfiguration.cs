@@ -18,7 +18,7 @@ namespace Domain.Configuration
             entity.Property(e => e.Name).IsRequired();
             entity.Property(e => e.Surname).IsRequired();
             entity.Property(e => e.Email).IsRequired();
-            entity.Property(e => e.Password).IsRequired().HasMaxLength(20);
+            entity.Property(e => e.Password).IsRequired().HasMaxLength(32);
         }
     }
 }
