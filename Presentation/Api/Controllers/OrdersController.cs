@@ -3,12 +3,9 @@ using Application.Features.Commands.OrderCommands.DeleteOrder;
 using Application.Features.Commands.OrderCommands.UpdateOrder;
 using Application.Features.Queries.OrderQueries.GetAllOrders;
 using Application.Features.Queries.OrderQueries.GetByIdOrder;
-using Application.Features.Queries.OrderQueries.SearchOrder;
+using Application.Features.Queries.OrderQueries.GetUserAllOrder;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Api.Controllers
 {
@@ -52,6 +49,13 @@ namespace Api.Controllers
         public async Task<DeleteOrderCommandResponse> DeleteOrder(string id)
         {
             return await _mediator.Send(new DeleteOrderCommandRequest { Id = id });
+        }
+
+
+        [HttpGet("GetByUserIdOrder/{userId}")]
+        public async Task<List<GetUserAllOrderQueryResponse>> GetByUserIdOrder(string userId)
+        {
+            return await _mediator.Send(new GetUserAllOrderQueryRequest { UserId = userId });
         }
 
     }
