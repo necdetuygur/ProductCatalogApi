@@ -12,10 +12,10 @@ namespace Application.Features.Commands.ProductCommands.CreateProduct
     {
         public CreateProductCommandValidator()
         {
-            RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required");
-            RuleFor(x => x.Price).NotEmpty().WithMessage("Price is required");
-            RuleFor(x => x.Picture).NotEmpty().WithMessage("Picture is required").MaximumLength(100);
+            RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required").MaximumLength(100);
             RuleFor(x => x.Description).NotEmpty().WithMessage("Description is required").MaximumLength(500);
+            RuleFor(x => x.Price).NotEmpty().WithMessage("Price is required");
+            RuleFor(x => x.Picture).NotEmpty().WithMessage("Picture is required");
             RuleFor(x => x.CategoryId).NotEmpty().WithMessage("CategoryId is required");
             //RuleFor(x => x.BrandId).NotEmpty().WithMessage("BrandId is required");
             //RuleFor(x => x.ColorId).NotEmpty().WithMessage("ColorId is required");
