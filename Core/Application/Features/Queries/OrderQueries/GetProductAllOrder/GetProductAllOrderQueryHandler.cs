@@ -1,4 +1,6 @@
-﻿using Application.Repositories.OrderRepository;
+﻿using Application.Features.Queries.UserQueries.GetByIdUser;
+using Application.Repositories.OrderRepository;
+using Application.Repositories.UserRepository;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,10 +15,12 @@ namespace Application.Features.Queries.OrderQueries.GetProductAllOrder
     public class GetProductAllOrderQueryHandler : IRequestHandler<GetProductAllOrderQueryRequest, List<GetProductAllOrderQueryResponse>>
     {
         private readonly IOrderReadRepository _OrderReadRepository;
+        private readonly IUserReadRepository _UserReadRepository;
 
-        public GetProductAllOrderQueryHandler(IOrderReadRepository OrderReadRepository)
+        public GetProductAllOrderQueryHandler(IOrderReadRepository OrderReadRepository, IUserReadRepository UserReadRepository)
         {
             _OrderReadRepository = OrderReadRepository;
+            _UserReadRepository = UserReadRepository;
         }
         public async Task<List<GetProductAllOrderQueryResponse>> Handle(GetProductAllOrderQueryRequest request, CancellationToken cancellationToken)
         {
@@ -26,13 +30,21 @@ namespace Application.Features.Queries.OrderQueries.GetProductAllOrder
 
             foreach (var p in orders)
             {
+                var u = _UserReadRepository.Table.FirstOrDefault(x => x.Id == p.UserId);
+                GetByIdUserQueryResponse user = new();
+                user.Id = u.Id;
+                user.Name = u.Name;
+                user.Surname = u.Surname;
+                user.Email = u.Email;
+
                 responseList.Add(new GetProductAllOrderQueryResponse
                 {
                     Id = p.Id,
                     Price = p.Price,
                     ProductId = p.ProductId,
                     UserId = p.UserId,
-                    StatusId = p.StatusId
+                    StatusId = p.StatusId,
+                    User = user,
                 });
             }
             return responseList;

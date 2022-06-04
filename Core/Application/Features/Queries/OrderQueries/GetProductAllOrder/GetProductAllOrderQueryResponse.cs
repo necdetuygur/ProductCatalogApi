@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Features.Queries.UserQueries.GetByIdUser;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Application.Features.Queries.OrderQueries.GetProductAllOrder
         public decimal Price { get; set; }
         public Guid ProductId { get; set; }
         public Guid UserId { get; set; }
+        public GetByIdUserQueryResponse User { get; set; }
         public byte StatusId { get; set; }
     }
 }
