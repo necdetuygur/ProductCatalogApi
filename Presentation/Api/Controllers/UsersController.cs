@@ -73,6 +73,7 @@ namespace Api.Controllers
                 Id = user.Id,
                 Name = user.Name,
                 Email = user.Email,
+                Surname = user.Surname,
                 GuidId = Guid.NewGuid(),
             }, _jwtSettings);
 

@@ -29,17 +29,32 @@ namespace Infrastructure.JwtHelpers
         {
             try
             {
+                if (model == null)
+                {
+                    throw new ArgumentException(nameof(model));
+                }
                 var UserToken = new UserTokens();
-                if (model == null) throw new ArgumentException(nameof(model));
-                // Get secret key
                 var key = System.Text.Encoding.ASCII.GetBytes(jwtSettings.IssuerSigningKey);
                 Guid Id = Guid.Empty;
                 DateTime expireTime = DateTime.UtcNow.AddDays(1);
+
                 UserToken.Validaty = expireTime.TimeOfDay;
-                var JWToken = new JwtSecurityToken(issuer: jwtSettings.ValidIssuer, audience: jwtSettings.ValidAudience, claims: GetClaims(model, out Id), notBefore: new DateTimeOffset(DateTime.Now).DateTime, expires: new DateTimeOffset(expireTime).DateTime, signingCredentials: new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256));
+                var JWToken = new JwtSecurityToken(
+                    issuer: jwtSettings.ValidIssuer,
+                    audience: jwtSettings.ValidAudience,
+                    claims: GetClaims(model, out Id),
+                    notBefore: new DateTimeOffset(DateTime.Now).DateTime,
+                    expires: new DateTimeOffset(expireTime).DateTime,
+                    signingCredentials: new SigningCredentials(
+                        new SymmetricSecurityKey(key),
+                        SecurityAlgorithms.HmacSha256
+                    )
+                );
                 UserToken.Token = new JwtSecurityTokenHandler().WriteToken(JWToken);
                 UserToken.Id = model.Id;
                 UserToken.GuidId = Id;
+                UserToken.Name = model.Name;
+                UserToken.Surname = model.Surname;
                 return UserToken;
             }
             catch (Exception)

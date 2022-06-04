@@ -9,6 +9,14 @@ namespace Infrastructure.JwtModels
             get;
             set;
         }
+        public string Surname
+        {
+            get;
+            set;
+        }
+
+
+
         public string Token
         {
             get;

@@ -16,6 +16,5 @@ namespace Infrastructure.JwtModels
             get;
             set;
         }
-
     }
 }
