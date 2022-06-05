@@ -21,7 +21,7 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public async Task<List<GetAllProductQueryResponse>> Get()
+        public async Task<List<GetAllProductQueryResponse>> GetProducts()
         {
             return await _mediator.Send(new GetAllProductQueryRequest());
         }

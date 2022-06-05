@@ -22,7 +22,7 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public async Task<List<GetAllOrderQueryResponse>> Get()
+        public async Task<List<GetAllOrderQueryResponse>> GetOrders()
         {
             return await _mediator.Send(new GetAllOrderQueryRequest());
         }
