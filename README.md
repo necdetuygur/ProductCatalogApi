@@ -3,7 +3,6 @@ git push origin --all && git push gitlab --all && exit
 # ProductCatalogApi
 # LC Waikiki .Net BootCamp Bitirme Projesi Ödevi
 
-Bir internet sitesindeki ürün ve kategoriyi örnek alarak bir web api oluşturdum.
 
 ## Paketler 
     dotnet add package Microsoft.EntityFrameworkCore -v 5.0.10
@@ -13,6 +12,7 @@ Bir internet sitesindeki ürün ve kategoriyi örnek alarak bir web api oluştur
     dotnet add package Microsoft.EntityFrameworkCore.Design -v 5.0.10
     dotnet add package Microsoft.EntityFrameworkCore.Tools -v 5.0.10
     dotnet add package Microsoft.EntityFrameworkCore.SqlServer -v 5.0.10
+    //değişecek bu kısım
     
     
     
@@ -84,7 +84,7 @@ Bir internet sitesindeki ürün ve kategoriyi örnek alarak bir web api oluştur
 # API 
 
 ## GetCategories
-![GetCategoriesPicture](/images/category_getall.png)
+![GetCategoriesPicture](images/category_getall.png)
 
 
 
