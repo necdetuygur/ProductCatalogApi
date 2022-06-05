@@ -24,7 +24,7 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public async Task<List<GetAllBrandQueryResponse>> Get()
+        public async Task<List<GetAllBrandQueryResponse>> GetBrands()
         {
             return await _mediator.Send(new GetAllBrandQueryRequest());
         }

@@ -24,7 +24,7 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public async Task<List<GetAllColorQueryResponse>> Get()
+        public async Task<List<GetAllColorQueryResponse>> GetColors()
         {
             return await _mediator.Send(new GetAllColorQueryRequest());
         }

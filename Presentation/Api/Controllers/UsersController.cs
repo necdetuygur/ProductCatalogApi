@@ -31,7 +31,7 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public async Task<List<GetAllUserQueryResponse>> Get()
+        public async Task<List<GetAllUserQueryResponse>> GetUsers()
         {
             return await _mediator.Send(new GetAllUserQueryRequest());
         }

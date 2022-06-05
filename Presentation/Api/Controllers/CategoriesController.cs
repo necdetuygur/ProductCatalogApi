@@ -24,7 +24,7 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public async Task<List<GetAllCategoryQueryResponse>> Get()
+        public async Task<List<GetAllCategoryQueryResponse>> GetCategories()
         {
             return await _mediator.Send(new GetAllCategoryQueryRequest());
         }
