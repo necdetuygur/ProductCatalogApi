@@ -24,7 +24,7 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public async Task<List<GetAllUseCaseQueryResponse>> Get()
+        public async Task<List<GetAllUseCaseQueryResponse>> GetUseCases()
         {
             return await _mediator.Send(new GetAllUseCaseQueryRequest());
         }

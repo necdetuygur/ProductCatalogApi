@@ -16,7 +16,7 @@ namespace Persistence.Repositories.UserRepository
 
         public User Authenticate(string email, string password)
         {
-            var user = Table.SingleOrDefault(x => x.Email == email && x.Password == password);
+            var user = Table.FirstOrDefault(x => x.Email == email && x.Password == password);
             return user;
         }
     }

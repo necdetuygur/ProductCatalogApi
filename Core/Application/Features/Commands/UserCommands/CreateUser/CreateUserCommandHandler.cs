@@ -22,6 +22,16 @@ namespace Application.Features.Commands.UserCommands.CreateUser
         }
         public async Task<CreateUserCommandResponse> Handle(CreateUserCommandRequest request, CancellationToken cancellationToken)
         {
+            var email = await _UserReadRepository.GetSingleAsync(p => p.Email == request.Email);
+
+            if (email is not null)
+            {
+                return new CreateUserCommandResponse()
+                {
+                    Success = false,
+                    Message = "Email is already exists"
+                };
+            }
 
             var id = Guid.NewGuid();
             User User = new User
