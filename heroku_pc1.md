@@ -12,3 +12,5 @@ api: productcatalog1api.herokuapp.com
 app: productcatalog1app.herokuapp.com
 
 Server=sql.bsite.net\\MSSQL2016;Database=productcatalog1_db1;User ID=productcatalog1_db1;Password=Product.741852;Trusted_Connection=False;TrustServerCertificate=True
+
+dotnet ef database update --startup-project Presentation/Api --project Infrastructure/Persistence -c ProjectDbContext
