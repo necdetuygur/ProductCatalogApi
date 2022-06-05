@@ -10,7 +10,6 @@ namespace Application.Features.Commands.OrderCommands.CreateOrder
 {
     public class CreateOrderCommandRequest : IRequest<CreateOrderCommandResponse>
     {
-        public Guid Id { get; set; }
         public decimal Price { get; set; }
         public Guid ProductId { get; set; }
         public Guid UserId { get; set; }

@@ -10,7 +10,6 @@ namespace Application.Features.Commands.ProductCommands.CreateProduct
 {
     public class CreateProductCommandRequest : IRequest<CreateProductCommandResponse>
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string Picture { get; set; }

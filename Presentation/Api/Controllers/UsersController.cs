@@ -54,11 +54,11 @@ namespace Api.Controllers
         //    return await _mediator.Send(request);
         //}
 
-        //[HttpDelete("{id}")]
-        //public async Task<DeleteUserCommandResponse> DeleteUser(string id)
-        //{
-        //    return await _mediator.Send(new DeleteUserCommandRequest { Id = id });
-        //}
+        [HttpDelete("{id}")]
+        public async Task<DeleteUserCommandResponse> DeleteUser(string id)
+        {
+            return await _mediator.Send(new DeleteUserCommandRequest { Id = id });
+        }
 
         [HttpPost("Login")]
         public IActionResult Login(UserLogins userLogins)

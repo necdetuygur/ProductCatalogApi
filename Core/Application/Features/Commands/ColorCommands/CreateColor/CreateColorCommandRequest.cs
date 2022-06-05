@@ -10,7 +10,6 @@ namespace Application.Features.Commands.ColorCommands.CreateColor
 {
     public class CreateColorCommandRequest : IRequest<CreateColorCommandResponse>
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
     }
 }

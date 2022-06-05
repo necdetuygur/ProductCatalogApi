@@ -10,7 +10,6 @@ namespace Application.Features.Commands.UseCaseCommands.CreateUseCase
 {
     public class CreateUseCaseCommandRequest : IRequest<CreateUseCaseCommandResponse>
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
     }
 }

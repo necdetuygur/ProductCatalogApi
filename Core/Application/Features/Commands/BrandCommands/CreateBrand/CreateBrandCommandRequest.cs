@@ -10,7 +10,6 @@ namespace Application.Features.Commands.BrandCommands.CreateBrand
 {
     public class CreateBrandCommandRequest : IRequest<CreateBrandCommandResponse>
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
     }
 }
