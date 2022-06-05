@@ -84,7 +84,7 @@ git push origin --all && git push gitlab --all && exit
 # API 
 
 ## GetCategories
-![GetCategoriesPicture](images/category_getall.png)
+![GetCategoriesPicture](/images/category_getall.png)
 
 
 
