@@ -11,19 +11,19 @@ namespace Application.Features.Commands.ProductCommands.DeleteProduct
 {
     public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommandRequest, DeleteProductCommandResponse>
     {
-        private readonly IProductWriteRepository _ProductWriteRepository;
-        private readonly IProductReadRepository _ProductReadRepository;
+        private readonly IProductWriteRepository _productWriteRepository;
+        private readonly IProductReadRepository _productReadRepository;
 
-        public DeleteProductCommandHandler(IProductWriteRepository orderWriteRepository, IProductReadRepository orderReadRepository)
+        public DeleteProductCommandHandler(IProductWriteRepository productWriteRepository, IProductReadRepository productReadRepository)
         {
-            _ProductWriteRepository = orderWriteRepository;
-            _ProductReadRepository = orderReadRepository;
+            _productWriteRepository = productWriteRepository;
+            _productReadRepository = productReadRepository;
         }
         public async Task<DeleteProductCommandResponse> Handle(DeleteProductCommandRequest request, CancellationToken cancellationToken)
         {
-            var Product = await _ProductReadRepository.GetByIdAsync(request.Id);
+            var product = await _productReadRepository.GetByIdAsync(request.Id);
 
-            if (Product is null)
+            if (product is null)
             {
                 return new DeleteProductCommandResponse
                 {
@@ -32,9 +32,9 @@ namespace Application.Features.Commands.ProductCommands.DeleteProduct
                 };
             }
 
-            _ProductWriteRepository.Remove(Product);
+            _productWriteRepository.Remove(product);
 
-            var result = await _ProductWriteRepository.SaveAsync() == 1 ? true : false;
+            var result = await _productWriteRepository.SaveAsync() == 1 ? true : false;
 
             return new DeleteProductCommandResponse
             {

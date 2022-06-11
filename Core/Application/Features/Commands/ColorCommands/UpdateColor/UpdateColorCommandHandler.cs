@@ -11,24 +11,24 @@ namespace Application.Features.Commands.ColorCommands.UpdateColor
 {
     public class UpdateColorCommandHandler : IRequestHandler<UpdateColorCommandRequest, UpdateColorCommandResponse>
     {
-        private readonly IColorReadRepository _ColorReadRepository;
-        private readonly IColorWriteRepository _ColorWriteRepository;
+        private readonly IColorReadRepository _colorReadRepository;
+        private readonly IColorWriteRepository _colorWriteRepository;
 
-        public UpdateColorCommandHandler(IColorWriteRepository ColorWriteRepository, IColorReadRepository ColorReadRepository)
+        public UpdateColorCommandHandler(IColorWriteRepository colorWriteRepository, IColorReadRepository colorReadRepository)
         {
 
-            _ColorWriteRepository = ColorWriteRepository;
-            _ColorReadRepository = ColorReadRepository;
+            _colorWriteRepository = colorWriteRepository;
+            _colorReadRepository = colorReadRepository;
         }
         public async Task<UpdateColorCommandResponse> Handle(UpdateColorCommandRequest request, CancellationToken cancellationToken)
         {
-            var Color = await _ColorReadRepository.GetByIdAsync(request.Id);
-            if (Color == null)
+            var color = await _colorReadRepository.GetByIdAsync(request.Id);
+            if (color == null)
             {
                 return new UpdateColorCommandResponse
                 {
                     Success = false,
-                    Message = "Color not found"
+                    Message = "Color is not found"
                 };
             }
 
@@ -41,16 +41,16 @@ namespace Application.Features.Commands.ColorCommands.UpdateColor
                 };
             }
 
-            Color.Name = request.Name ?? Color.Name;
+            color.Name = request.Name ?? color.Name;
 
-            _ColorWriteRepository.Update(Color);
+            _colorWriteRepository.Update(color);
 
-            await _ColorWriteRepository.SaveAsync();
+            await _colorWriteRepository.SaveAsync();
 
             return new UpdateColorCommandResponse
             {
                 Success = true,
-                Message = "Color updated successfully"
+                Message = "Color is updated successfully"
             };
         }
 

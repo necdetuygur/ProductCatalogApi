@@ -11,24 +11,24 @@ namespace Application.Features.Commands.ProductCommands.UpdateProduct
 {
     public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandRequest, UpdateProductCommandResponse>
     {
-        private readonly IProductReadRepository _ProductReadRepository;
-        private readonly IProductWriteRepository _ProductWriteRepository;
+        private readonly IProductReadRepository _productReadRepository;
+        private readonly IProductWriteRepository _productWriteRepository;
 
-        public UpdateProductCommandHandler(IProductWriteRepository ProductWriteRepository, IProductReadRepository ProductReadRepository)
+        public UpdateProductCommandHandler(IProductWriteRepository productWriteRepository, IProductReadRepository productReadRepository)
         {
 
-            _ProductWriteRepository = ProductWriteRepository;
-            _ProductReadRepository = ProductReadRepository;
+            _productWriteRepository = productWriteRepository;
+            _productReadRepository = productReadRepository;
         }
         public async Task<UpdateProductCommandResponse> Handle(UpdateProductCommandRequest request, CancellationToken cancellationToken)
         {
-            var Product = await _ProductReadRepository.GetByIdAsync(request.Id);
-            if (Product == null)
+            var product = await _productReadRepository.GetByIdAsync(request.Id);
+            if (product == null)
             {
                 return new UpdateProductCommandResponse
                 {
                     Success = false,
-                    Message = "Product not found"
+                    Message = "Product is not found"
                 };
             }
 
@@ -41,26 +41,26 @@ namespace Application.Features.Commands.ProductCommands.UpdateProduct
                 };
             }
 
-            Product.Name = request.Name ?? Product.Name;
-            Product.Price = request.Price ?? Product.Price;
-            Product.Picture = request.Picture ?? Product.Picture;
-            Product.Description = request.Description ?? Product.Description;
-            Product.CategoryId = request.CategoryId ?? Product.CategoryId;
-            Product.BrandId = request.BrandId ?? Product.BrandId;
-            Product.ColorId = request.ColorId ?? Product.ColorId;
-            Product.UseCaseId = request.UseCaseId ?? Product.UseCaseId;
-            Product.IsOfferable = request.IsOfferable ?? Product.IsOfferable;
-            Product.IsSold = request.IsSold ?? Product.IsSold;
-            Product.UserId = request.UserId ?? Product.UserId;
+            product.Name = request.Name ?? product.Name;
+            product.Price = request.Price ?? product.Price;
+            product.Picture = request.Picture ?? product.Picture;
+            product.Description = request.Description ?? product.Description;
+            product.CategoryId = request.CategoryId ?? product.CategoryId;
+            product.BrandId = request.BrandId ?? product.BrandId;
+            product.ColorId = request.ColorId ?? product.ColorId;
+            product.UseCaseId = request.UseCaseId ?? product.UseCaseId;
+            product.IsOfferable = request.IsOfferable ?? product.IsOfferable;
+            product.IsSold = request.IsSold ?? product.IsSold;
+            product.UserId = request.UserId ?? product.UserId;
 
-            _ProductWriteRepository.Update(Product);
+            _productWriteRepository.Update(product);
 
-            await _ProductWriteRepository.SaveAsync();
+            await _productWriteRepository.SaveAsync();
 
             return new UpdateProductCommandResponse
             {
                 Success = true,
-                Message = "Product updated successfully"
+                Message = "Product is updated successfully"
             };
         }
 

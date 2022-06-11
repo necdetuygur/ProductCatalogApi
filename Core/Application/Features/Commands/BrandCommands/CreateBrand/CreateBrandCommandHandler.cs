@@ -12,29 +12,29 @@ namespace Application.Features.Commands.BrandCommands.CreateBrand
 {
     public class CreateBrandCommandHandler : IRequestHandler<CreateBrandCommandRequest, CreateBrandCommandResponse>
     {
-        private readonly IBrandWriteRepository _BrandWriteRepository;
-        private readonly IBrandReadRepository _BrandReadRepository;
+        private readonly IBrandWriteRepository _brandWriteRepository;
+        private readonly IBrandReadRepository _brandReadRepository;
 
-        public CreateBrandCommandHandler(IBrandWriteRepository BrandWriteRepository, IBrandReadRepository BrandReadRepository)
+        public CreateBrandCommandHandler(IBrandWriteRepository brandWriteRepository, IBrandReadRepository brandReadRepository)
         {
-            _BrandWriteRepository = BrandWriteRepository;
-            _BrandReadRepository = BrandReadRepository;
+            _brandWriteRepository = brandWriteRepository;
+            _brandReadRepository = brandReadRepository;
         }
         public async Task<CreateBrandCommandResponse> Handle(CreateBrandCommandRequest request, CancellationToken cancellationToken)
         {
 
             var id = Guid.NewGuid();
-            Brand Brand = new Brand
+            Brand brand = new Brand
             {
                 Id = id,
                 Name = request.Name,
             };
 
-            var result = await _BrandWriteRepository.AddAsync(Brand);
+            var result = await _brandWriteRepository.AddAsync(brand);
 
-            await _BrandWriteRepository.SaveAsync();//== 1 ? true : false;
+            await _brandWriteRepository.SaveAsync();//== 1 ? true : false;
 
-            return new CreateBrandCommandResponse { Success = result, Message = result ? "Brand created successfully" : "Brand creation failed" };
+            return new CreateBrandCommandResponse { Success = result, Message = result ? "Brand is created successfully" : "Brand creation is failed" };
         }
     }
 }

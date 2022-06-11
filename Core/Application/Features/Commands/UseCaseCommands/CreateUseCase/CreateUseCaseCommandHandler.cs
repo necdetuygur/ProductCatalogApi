@@ -12,29 +12,29 @@ namespace Application.Features.Commands.UseCaseCommands.CreateUseCase
 {
     public class CreateUseCaseCommandHandler : IRequestHandler<CreateUseCaseCommandRequest, CreateUseCaseCommandResponse>
     {
-        private readonly IUseCaseWriteRepository _UseCaseWriteRepository;
-        private readonly IUseCaseReadRepository _UseCaseReadRepository;
+        private readonly IUseCaseWriteRepository _useCaseWriteRepository;
+        private readonly IUseCaseReadRepository _useCaseReadRepository;
 
-        public CreateUseCaseCommandHandler(IUseCaseWriteRepository UseCaseWriteRepository, IUseCaseReadRepository UseCaseReadRepository)
+        public CreateUseCaseCommandHandler(IUseCaseWriteRepository useCaseWriteRepository, IUseCaseReadRepository useCaseReadRepository)
         {
-            _UseCaseWriteRepository = UseCaseWriteRepository;
-            _UseCaseReadRepository = UseCaseReadRepository;
+            _useCaseWriteRepository = useCaseWriteRepository;
+            _useCaseReadRepository = useCaseReadRepository;
         }
         public async Task<CreateUseCaseCommandResponse> Handle(CreateUseCaseCommandRequest request, CancellationToken cancellationToken)
         {
 
             var id = Guid.NewGuid();
-            UseCase UseCase = new UseCase
+            UseCase useCase = new UseCase
             {
                 Id = id,
                 Name = request.Name
             };
 
-            var result = await _UseCaseWriteRepository.AddAsync(UseCase);
+            var result = await _useCaseWriteRepository.AddAsync(useCase);
 
-            await _UseCaseWriteRepository.SaveAsync();//== 1 ? true : false;
+            await _useCaseWriteRepository.SaveAsync();//== 1 ? true : false;
 
-            return new CreateUseCaseCommandResponse { Success = result, Message = result ? "UseCase created successfully" : "UseCase creation failed" };
+            return new CreateUseCaseCommandResponse { Success = result, Message = result ? "UseCase  is created successfully" : "UseCase creation is failed" };
         }
     }
 }

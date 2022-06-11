@@ -12,29 +12,29 @@ namespace Application.Features.Commands.ColorCommands.CreateColor
 {
     public class CreateColorCommandHandler : IRequestHandler<CreateColorCommandRequest, CreateColorCommandResponse>
     {
-        private readonly IColorWriteRepository _ColorWriteRepository;
-        private readonly IColorReadRepository _ColorReadRepository;
+        private readonly IColorWriteRepository _colorWriteRepository;
+        private readonly IColorReadRepository _colorReadRepository;
 
-        public CreateColorCommandHandler(IColorWriteRepository ColorWriteRepository, IColorReadRepository ColorReadRepository)
+        public CreateColorCommandHandler(IColorWriteRepository colorWriteRepository, IColorReadRepository colorReadRepository)
         {
-            _ColorWriteRepository = ColorWriteRepository;
-            _ColorReadRepository = ColorReadRepository;
+            _colorWriteRepository = colorWriteRepository;
+            _colorReadRepository = colorReadRepository;
         }
         public async Task<CreateColorCommandResponse> Handle(CreateColorCommandRequest request, CancellationToken cancellationToken)
         {
 
             var id = Guid.NewGuid();
-            Color Color = new Color
+            Color color = new Color
             {
                 Id = id,
                 Name = request.Name
             };
 
-            var result = await _ColorWriteRepository.AddAsync(Color);
+            var result = await _colorWriteRepository.AddAsync(color);
 
-            await _ColorWriteRepository.SaveAsync();//== 1 ? true : false;
+            await _colorWriteRepository.SaveAsync();//== 1 ? true : false;
 
-            return new CreateColorCommandResponse { Success = result, Message = result ? "Color created successfully" : "Color creation failed" };
+            return new CreateColorCommandResponse { Success = result, Message = result ? "Color is created successfully" : "Color creation is failed" };
         }
     }
 }

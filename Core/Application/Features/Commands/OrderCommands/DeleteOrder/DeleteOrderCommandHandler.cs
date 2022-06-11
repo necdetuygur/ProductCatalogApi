@@ -11,19 +11,19 @@ namespace Application.Features.Commands.OrderCommands.DeleteOrder
 {
     public class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderCommandRequest, DeleteOrderCommandResponse>
     {
-        private readonly IOrderWriteRepository _OrderWriteRepository;
-        private readonly IOrderReadRepository _OrderReadRepository;
+        private readonly IOrderWriteRepository _orderWriteRepository;
+        private readonly IOrderReadRepository _orderReadRepository;
 
         public DeleteOrderCommandHandler(IOrderWriteRepository orderWriteRepository, IOrderReadRepository orderReadRepository)
         {
-            _OrderWriteRepository = orderWriteRepository;
-            _OrderReadRepository = orderReadRepository;
+            _orderWriteRepository = orderWriteRepository;
+            _orderReadRepository = orderReadRepository;
         }
         public async Task<DeleteOrderCommandResponse> Handle(DeleteOrderCommandRequest request, CancellationToken cancellationToken)
         {
-            var Order = await _OrderReadRepository.GetByIdAsync(request.Id);
+            var order = await _orderReadRepository.GetByIdAsync(request.Id);
 
-            if (Order is null)
+            if (order is null)
             {
                 return new DeleteOrderCommandResponse
                 {
@@ -32,9 +32,9 @@ namespace Application.Features.Commands.OrderCommands.DeleteOrder
                 };
             }
 
-            _OrderWriteRepository.Remove(Order);
+            _orderWriteRepository.Remove(order);
 
-            var result = await _OrderWriteRepository.SaveAsync() == 1 ? true : false;
+            var result = await _orderWriteRepository.SaveAsync() == 1 ? true : false;
 
             return new DeleteOrderCommandResponse
             {

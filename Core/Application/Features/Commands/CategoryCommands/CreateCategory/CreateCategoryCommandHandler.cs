@@ -12,19 +12,19 @@ namespace Application.Features.Commands.CategoryCommands.CreateCategory
 {
     public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommandRequest, CreateCategoryCommandResponse>
     {
-        private readonly ICategoryWriteRepository _CategoryWriteRepository;
-        private readonly ICategoryReadRepository _CategoryReadRepository;
+        private readonly ICategoryWriteRepository _categoryWriteRepository;
+        private readonly ICategoryReadRepository _categoryReadRepository;
 
-        public CreateCategoryCommandHandler(ICategoryWriteRepository CategoryWriteRepository, ICategoryReadRepository CategoryReadRepository)
+        public CreateCategoryCommandHandler(ICategoryWriteRepository categoryWriteRepository, ICategoryReadRepository categoryReadRepository)
         {
-            _CategoryWriteRepository = CategoryWriteRepository;
-            _CategoryReadRepository = CategoryReadRepository;
+            _categoryWriteRepository = categoryWriteRepository;
+            _categoryReadRepository = categoryReadRepository;
         }
         public async Task<CreateCategoryCommandResponse> Handle(CreateCategoryCommandRequest request, CancellationToken cancellationToken)
         {
 
             var id = Guid.NewGuid();
-            Category Category = new Category
+            Category category = new Category
             {
                 Id = id,
                 Name = request.Name,
@@ -32,11 +32,11 @@ namespace Application.Features.Commands.CategoryCommands.CreateCategory
                 Slug = request.Slug
             };
 
-            var result = await _CategoryWriteRepository.AddAsync(Category);
+            var result = await _categoryWriteRepository.AddAsync(category);
 
-            await _CategoryWriteRepository.SaveAsync();//== 1 ? true : false;
+            await _categoryWriteRepository.SaveAsync();//== 1 ? true : false;
 
-            return new CreateCategoryCommandResponse { Success = result, Message = result ? "Category created successfully" : "Category creation failed" };
+            return new CreateCategoryCommandResponse { Success = result, Message = result ? "Category is created successfully" : "Category creation is failed" };
         }
     }
 }

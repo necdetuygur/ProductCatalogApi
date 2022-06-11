@@ -11,24 +11,24 @@ namespace Application.Features.Commands.UserCommands.UpdateUser
 {
     public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommandRequest, UpdateUserCommandResponse>
     {
-        private readonly IUserReadRepository _UserReadRepository;
-        private readonly IUserWriteRepository _UserWriteRepository;
+        private readonly IUserReadRepository _userReadRepository;
+        private readonly IUserWriteRepository _userWriteRepository;
 
-        public UpdateUserCommandHandler(IUserWriteRepository UserWriteRepository, IUserReadRepository UserReadRepository)
+        public UpdateUserCommandHandler(IUserWriteRepository userWriteRepository, IUserReadRepository userReadRepository)
         {
 
-            _UserWriteRepository = UserWriteRepository;
-            _UserReadRepository = UserReadRepository;
+            _userWriteRepository = userWriteRepository;
+            _userReadRepository = userReadRepository;
         }
         public async Task<UpdateUserCommandResponse> Handle(UpdateUserCommandRequest request, CancellationToken cancellationToken)
         {
-            var User = await _UserReadRepository.GetByIdAsync(request.Id);
-            if (User == null)
+            var user = await _userReadRepository.GetByIdAsync(request.Id);
+            if (user == null)
             {
                 return new UpdateUserCommandResponse
                 {
                     Success = false,
-                    Message = "User not found"
+                    Message = "User is not found"
                 };
             }
 
@@ -41,21 +41,21 @@ namespace Application.Features.Commands.UserCommands.UpdateUser
                 };
             }
 
-            User.Name = request.Name ?? User.Name;
-            User.Surname = request.Surname ?? User.Surname;
-            User.Email = request.Email ?? User.Email;
-            User.Password = request.Password ?? User.Password;
+            user.Name = request.Name ?? user.Name;
+            user.Surname = request.Surname ?? user.Surname;
+            user.Email = request.Email ?? user.Email;
+            user.Password = request.Password ?? user.Password;
 
-            User.Password = Helpers.Md5.Hash(User.Password);
+            user.Password = Helpers.Md5.Hash(user.Password);
 
-            _UserWriteRepository.Update(User);
+            _userWriteRepository.Update(user);
 
-            await _UserWriteRepository.SaveAsync();
+            await _userWriteRepository.SaveAsync();
 
             return new UpdateUserCommandResponse
             {
                 Success = true,
-                Message = "User updated successfully"
+                Message = "User is updated successfully"
             };
         }
 

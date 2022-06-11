@@ -11,19 +11,19 @@ namespace Application.Features.Commands.CategoryCommands.DeleteCategory
 {
     public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryCommandRequest, DeleteCategoryCommandResponse>
     {
-        private readonly ICategoryWriteRepository _CategoryWriteRepository;
-        private readonly ICategoryReadRepository _CategoryReadRepository;
+        private readonly ICategoryWriteRepository _categoryWriteRepository;
+        private readonly ICategoryReadRepository _categoryReadRepository;
 
-        public DeleteCategoryCommandHandler(ICategoryWriteRepository orderWriteRepository, ICategoryReadRepository orderReadRepository)
+        public DeleteCategoryCommandHandler(ICategoryWriteRepository categoryWriteRepository, ICategoryReadRepository categoryReadRepository)
         {
-            _CategoryWriteRepository = orderWriteRepository;
-            _CategoryReadRepository = orderReadRepository;
+            _categoryWriteRepository = categoryWriteRepository;
+            _categoryReadRepository = categoryReadRepository;
         }
         public async Task<DeleteCategoryCommandResponse> Handle(DeleteCategoryCommandRequest request, CancellationToken cancellationToken)
         {
-            var Category = await _CategoryReadRepository.GetByIdAsync(request.Id);
+            var category = await _categoryReadRepository.GetByIdAsync(request.Id);
 
-            if (Category is null)
+            if (category is null)
             {
                 return new DeleteCategoryCommandResponse
                 {
@@ -32,9 +32,9 @@ namespace Application.Features.Commands.CategoryCommands.DeleteCategory
                 };
             }
 
-            _CategoryWriteRepository.Remove(Category);
+            _categoryWriteRepository.Remove(category);
 
-            var result = await _CategoryWriteRepository.SaveAsync() == 1 ? true : false;
+            var result = await _categoryWriteRepository.SaveAsync() == 1 ? true : false;
 
             return new DeleteCategoryCommandResponse
             {

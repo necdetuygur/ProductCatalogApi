@@ -11,19 +11,19 @@ namespace Application.Features.Commands.UseCaseCommands.DeleteUseCase
 {
     public class DeleteUseCaseCommandHandler : IRequestHandler<DeleteUseCaseCommandRequest, DeleteUseCaseCommandResponse>
     {
-        private readonly IUseCaseWriteRepository _UseCaseWriteRepository;
-        private readonly IUseCaseReadRepository _UseCaseReadRepository;
+        private readonly IUseCaseWriteRepository _useCaseWriteRepository;
+        private readonly IUseCaseReadRepository _useCaseReadRepository;
 
-        public DeleteUseCaseCommandHandler(IUseCaseWriteRepository orderWriteRepository, IUseCaseReadRepository orderReadRepository)
+        public DeleteUseCaseCommandHandler(IUseCaseWriteRepository useCaseWriteRepository, IUseCaseReadRepository useCaseReadRepository)
         {
-            _UseCaseWriteRepository = orderWriteRepository;
-            _UseCaseReadRepository = orderReadRepository;
+            _useCaseWriteRepository = useCaseWriteRepository;
+            _useCaseReadRepository = useCaseReadRepository;
         }
         public async Task<DeleteUseCaseCommandResponse> Handle(DeleteUseCaseCommandRequest request, CancellationToken cancellationToken)
         {
-            var UseCase = await _UseCaseReadRepository.GetByIdAsync(request.Id);
+            var useCase = await _useCaseReadRepository.GetByIdAsync(request.Id);
 
-            if (UseCase is null)
+            if (useCase is null)
             {
                 return new DeleteUseCaseCommandResponse
                 {
@@ -32,9 +32,9 @@ namespace Application.Features.Commands.UseCaseCommands.DeleteUseCase
                 };
             }
 
-            _UseCaseWriteRepository.Remove(UseCase);
+            _useCaseWriteRepository.Remove(useCase);
 
-            var result = await _UseCaseWriteRepository.SaveAsync() == 1 ? true : false;
+            var result = await _useCaseWriteRepository.SaveAsync() == 1 ? true : false;
 
             return new DeleteUseCaseCommandResponse
             {

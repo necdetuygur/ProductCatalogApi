@@ -12,17 +12,17 @@ namespace Application.Features.Commands.UserCommands.CreateUser
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommandRequest, CreateUserCommandResponse>
     {
-        private readonly IUserWriteRepository _UserWriteRepository;
-        private readonly IUserReadRepository _UserReadRepository;
+        private readonly IUserWriteRepository _userWriteRepository;
+        private readonly IUserReadRepository _userReadRepository;
 
-        public CreateUserCommandHandler(IUserWriteRepository UserWriteRepository, IUserReadRepository UserReadRepository)
+        public CreateUserCommandHandler(IUserWriteRepository userWriteRepository, IUserReadRepository userReadRepository)
         {
-            _UserWriteRepository = UserWriteRepository;
-            _UserReadRepository = UserReadRepository;
+            _userWriteRepository = userWriteRepository;
+            _userReadRepository = userReadRepository;
         }
         public async Task<CreateUserCommandResponse> Handle(CreateUserCommandRequest request, CancellationToken cancellationToken)
         {
-            var email = await _UserReadRepository.GetSingleAsync(p => p.Email == request.Email);
+            var email = await _userReadRepository.GetSingleAsync(p => p.Email == request.Email);
 
             if (email is not null)
             {
@@ -34,7 +34,7 @@ namespace Application.Features.Commands.UserCommands.CreateUser
             }
 
             var id = Guid.NewGuid();
-            User User = new User
+            User user = new User
             {
                 Id = id,
                 Name = request.Name,
@@ -43,11 +43,11 @@ namespace Application.Features.Commands.UserCommands.CreateUser
                 Password = Helpers.Md5.Hash(request.Password)
             };
 
-            var result = await _UserWriteRepository.AddAsync(User);
+            var result = await _userWriteRepository.AddAsync(user);
 
-            await _UserWriteRepository.SaveAsync();//== 1 ? true : false;
+            await _userWriteRepository.SaveAsync();
 
-            return new CreateUserCommandResponse { Success = result, Message = result ? "User created successfully" : "User creation failed" };
+            return new CreateUserCommandResponse { Success = result, Message = result ? "User is created successfully" : "User creation is failed" };
         }
     }
 }

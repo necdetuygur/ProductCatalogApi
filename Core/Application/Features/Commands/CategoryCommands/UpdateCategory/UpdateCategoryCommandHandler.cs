@@ -11,24 +11,24 @@ namespace Application.Features.Commands.CategoryCommands.UpdateCategory
 {
     public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryCommandRequest, UpdateCategoryCommandResponse>
     {
-        private readonly ICategoryReadRepository _CategoryReadRepository;
-        private readonly ICategoryWriteRepository _CategoryWriteRepository;
+        private readonly ICategoryReadRepository _categoryReadRepository;
+        private readonly ICategoryWriteRepository _categoryWriteRepository;
 
-        public UpdateCategoryCommandHandler(ICategoryWriteRepository CategoryWriteRepository, ICategoryReadRepository CategoryReadRepository)
+        public UpdateCategoryCommandHandler(ICategoryWriteRepository categoryWriteRepository, ICategoryReadRepository categoryReadRepository)
         {
 
-            _CategoryWriteRepository = CategoryWriteRepository;
-            _CategoryReadRepository = CategoryReadRepository;
+            _categoryWriteRepository = categoryWriteRepository;
+            _categoryReadRepository = categoryReadRepository;
         }
         public async Task<UpdateCategoryCommandResponse> Handle(UpdateCategoryCommandRequest request, CancellationToken cancellationToken)
         {
-            var Category = await _CategoryReadRepository.GetByIdAsync(request.Id);
-            if (Category == null)
+            var category = await _categoryReadRepository.GetByIdAsync(request.Id);
+            if (category == null)
             {
                 return new UpdateCategoryCommandResponse
                 {
                     Success = false,
-                    Message = "Category not found"
+                    Message = "Category is not found"
                 };
             }
 
@@ -41,18 +41,18 @@ namespace Application.Features.Commands.CategoryCommands.UpdateCategory
                 };
             }
 
-            Category.Name = request.Name ?? Category.Name;
-            Category.Description = request.Description ?? Category.Description;
-            Category.Slug = request.Slug ?? Category.Slug;
+            category.Name = request.Name ?? category.Name;
+            category.Description = request.Description ?? category.Description;
+            category.Slug = request.Slug ?? category.Slug;
 
-            _CategoryWriteRepository.Update(Category);
+            _categoryWriteRepository.Update(category);
 
-            await _CategoryWriteRepository.SaveAsync();
+            await _categoryWriteRepository.SaveAsync();
 
             return new UpdateCategoryCommandResponse
             {
                 Success = true,
-                Message = "Category updated successfully"
+                Message = "Category is updated successfully"
             };
         }
 

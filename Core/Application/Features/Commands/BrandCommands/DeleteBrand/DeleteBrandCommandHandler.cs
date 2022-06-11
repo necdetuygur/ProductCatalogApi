@@ -11,19 +11,19 @@ namespace Application.Features.Commands.BrandCommands.DeleteBrand
 {
     public class DeleteBrandCommandHandler : IRequestHandler<DeleteBrandCommandRequest, DeleteBrandCommandResponse>
     {
-        private readonly IBrandWriteRepository _BrandWriteRepository;
-        private readonly IBrandReadRepository _BrandReadRepository;
+        private readonly IBrandWriteRepository _brandWriteRepository;
+        private readonly IBrandReadRepository _brandReadRepository;
 
-        public DeleteBrandCommandHandler(IBrandWriteRepository orderWriteRepository, IBrandReadRepository orderReadRepository)
+        public DeleteBrandCommandHandler(IBrandWriteRepository brandWriteRepository, IBrandReadRepository brandReadRepository)
         {
-            _BrandWriteRepository = orderWriteRepository;
-            _BrandReadRepository = orderReadRepository;
+            _brandWriteRepository = brandWriteRepository;
+            _brandReadRepository = brandReadRepository;
         }
         public async Task<DeleteBrandCommandResponse> Handle(DeleteBrandCommandRequest request, CancellationToken cancellationToken)
         {
-            var Brand = await _BrandReadRepository.GetByIdAsync(request.Id);
+            var brand = await _brandReadRepository.GetByIdAsync(request.Id);
 
-            if (Brand is null)
+            if (brand is null)
             {
                 return new DeleteBrandCommandResponse
                 {
@@ -32,9 +32,9 @@ namespace Application.Features.Commands.BrandCommands.DeleteBrand
                 };
             }
 
-            _BrandWriteRepository.Remove(Brand);
+            _brandWriteRepository.Remove(brand);
 
-            var result = await _BrandWriteRepository.SaveAsync() == 1 ? true : false;
+            var result = await _brandWriteRepository.SaveAsync() == 1 ? true : false;
 
             return new DeleteBrandCommandResponse
             {

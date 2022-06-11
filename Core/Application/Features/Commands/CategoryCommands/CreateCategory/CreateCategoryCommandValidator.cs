@@ -13,7 +13,6 @@ namespace Application.Features.Commands.CategoryCommands.CreateCategory
         public CreateCategoryCommandValidator()
         {
             RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required");
-            // RuleFor(x => x.Description).NotEmpty().WithMessage("Description is required");
             RuleFor(x => x.Slug).NotEmpty().WithMessage("Slug is required");
         }
     }

@@ -12,19 +12,19 @@ namespace Application.Features.Commands.OrderCommands.CreateOrder
 {
     public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommandRequest, CreateOrderCommandResponse>
     {
-        private readonly IOrderWriteRepository _OrderWriteRepository;
-        private readonly IOrderReadRepository _OrderReadRepository;
+        private readonly IOrderWriteRepository _orderWriteRepository;
+        private readonly IOrderReadRepository _orderReadRepository;
 
-        public CreateOrderCommandHandler(IOrderWriteRepository OrderWriteRepository, IOrderReadRepository OrderReadRepository)
+        public CreateOrderCommandHandler(IOrderWriteRepository orderWriteRepository, IOrderReadRepository orderReadRepository)
         {
-            _OrderWriteRepository = OrderWriteRepository;
-            _OrderReadRepository = OrderReadRepository;
+            _orderWriteRepository = orderWriteRepository;
+            _orderReadRepository = orderReadRepository;
         }
         public async Task<CreateOrderCommandResponse> Handle(CreateOrderCommandRequest request, CancellationToken cancellationToken)
         {
 
             var id = Guid.NewGuid();
-            Order Order = new Order
+            Order order = new Order
             {
                 Id = id,
                 Price = request.Price,
@@ -33,11 +33,11 @@ namespace Application.Features.Commands.OrderCommands.CreateOrder
                 StatusId = request.StatusId
             };
 
-            var result = await _OrderWriteRepository.AddAsync(Order);
+            var result = await _orderWriteRepository.AddAsync(order);
 
-            await _OrderWriteRepository.SaveAsync();//== 1 ? true : false;
+            await _orderWriteRepository.SaveAsync();//== 1 ? true : false;
 
-            return new CreateOrderCommandResponse { Success = result, Message = result ? "Order created successfully" : "Order creation failed" };
+            return new CreateOrderCommandResponse { Success = result, Message = result ? "Order is created successfully" : "Order creation is failed" };
         }
     }
 }

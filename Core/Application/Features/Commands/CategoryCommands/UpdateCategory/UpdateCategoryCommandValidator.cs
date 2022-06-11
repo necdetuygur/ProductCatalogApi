@@ -14,7 +14,6 @@ namespace Application.Features.Commands.CategoryCommands.UpdateCategory
         {
             RuleFor(x => x.Id).NotEmpty().WithMessage("Id is required");
             RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required");
-            // RuleFor(x => x.Description).NotEmpty().WithMessage("Description is required");
             RuleFor(x => x.Slug).NotEmpty().WithMessage("Slug is required");
         }
     }

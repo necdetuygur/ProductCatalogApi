@@ -11,24 +11,24 @@ namespace Application.Features.Commands.OrderCommands.UpdateOrder
 {
     public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommandRequest, UpdateOrderCommandResponse>
     {
-        private readonly IOrderReadRepository _OrderReadRepository;
-        private readonly IOrderWriteRepository _OrderWriteRepository;
+        private readonly IOrderReadRepository _orderReadRepository;
+        private readonly IOrderWriteRepository _orderWriteRepository;
 
-        public UpdateOrderCommandHandler(IOrderWriteRepository OrderWriteRepository, IOrderReadRepository OrderReadRepository)
+        public UpdateOrderCommandHandler(IOrderWriteRepository orderWriteRepository, IOrderReadRepository orderReadRepository)
         {
 
-            _OrderWriteRepository = OrderWriteRepository;
-            _OrderReadRepository = OrderReadRepository;
+            _orderWriteRepository = orderWriteRepository;
+            _orderReadRepository = orderReadRepository;
         }
         public async Task<UpdateOrderCommandResponse> Handle(UpdateOrderCommandRequest request, CancellationToken cancellationToken)
         {
-            var Order = await _OrderReadRepository.GetByIdAsync(request.Id);
-            if (Order == null)
+            var order = await _orderReadRepository.GetByIdAsync(request.Id);
+            if (order == null)
             {
                 return new UpdateOrderCommandResponse
                 {
                     Success = false,
-                    Message = "Order not found"
+                    Message = "Order is not found"
                 };
             }
 
@@ -41,19 +41,19 @@ namespace Application.Features.Commands.OrderCommands.UpdateOrder
                 };
             }
 
-            Order.Price = request.Price ?? Order.Price;
-            Order.ProductId = request.ProductId ?? Order.ProductId;
-            Order.UserId = request.UserId ?? Order.UserId;
-            Order.StatusId = request.StatusId ?? Order.StatusId;
+            order.Price = request.Price ?? order.Price;
+            order.ProductId = request.ProductId ?? order.ProductId;
+            order.UserId = request.UserId ?? order.UserId;
+            order.StatusId = request.StatusId ?? order.StatusId;
 
-            _OrderWriteRepository.Update(Order);
+            _orderWriteRepository.Update(order);
 
-            await _OrderWriteRepository.SaveAsync();
+            await _orderWriteRepository.SaveAsync();
 
             return new UpdateOrderCommandResponse
             {
                 Success = true,
-                Message = "Order updated successfully"
+                Message = "Order is updated successfully"
             };
         }
 

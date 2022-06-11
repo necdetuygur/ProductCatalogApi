@@ -11,19 +11,19 @@ namespace Application.Features.Commands.ColorCommands.DeleteColor
 {
     public class DeleteColorCommandHandler : IRequestHandler<DeleteColorCommandRequest, DeleteColorCommandResponse>
     {
-        private readonly IColorWriteRepository _ColorWriteRepository;
-        private readonly IColorReadRepository _ColorReadRepository;
+        private readonly IColorWriteRepository _colorWriteRepository;
+        private readonly IColorReadRepository _colorReadRepository;
 
-        public DeleteColorCommandHandler(IColorWriteRepository orderWriteRepository, IColorReadRepository orderReadRepository)
+        public DeleteColorCommandHandler(IColorWriteRepository colorWriteRepository, IColorReadRepository colorReadRepository)
         {
-            _ColorWriteRepository = orderWriteRepository;
-            _ColorReadRepository = orderReadRepository;
+            _colorWriteRepository = colorWriteRepository;
+            _colorReadRepository = colorReadRepository;
         }
         public async Task<DeleteColorCommandResponse> Handle(DeleteColorCommandRequest request, CancellationToken cancellationToken)
         {
-            var Color = await _ColorReadRepository.GetByIdAsync(request.Id);
+            var color = await _colorReadRepository.GetByIdAsync(request.Id);
 
-            if (Color is null)
+            if (color is null)
             {
                 return new DeleteColorCommandResponse
                 {
@@ -32,9 +32,9 @@ namespace Application.Features.Commands.ColorCommands.DeleteColor
                 };
             }
 
-            _ColorWriteRepository.Remove(Color);
+            _colorWriteRepository.Remove(color);
 
-            var result = await _ColorWriteRepository.SaveAsync() == 1 ? true : false;
+            var result = await _colorWriteRepository.SaveAsync() == 1 ? true : false;
 
             return new DeleteColorCommandResponse
             {

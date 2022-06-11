@@ -11,24 +11,24 @@ namespace Application.Features.Commands.BrandCommands.UpdateBrand
 {
     public class UpdateBrandCommandHandler : IRequestHandler<UpdateBrandCommandRequest, UpdateBrandCommandResponse>
     {
-        private readonly IBrandReadRepository _BrandReadRepository;
-        private readonly IBrandWriteRepository _BrandWriteRepository;
+        private readonly IBrandReadRepository _brandReadRepository;
+        private readonly IBrandWriteRepository _brandWriteRepository;
 
-        public UpdateBrandCommandHandler(IBrandWriteRepository BrandWriteRepository, IBrandReadRepository BrandReadRepository)
+        public UpdateBrandCommandHandler(IBrandWriteRepository brandWriteRepository, IBrandReadRepository brandReadRepository)
         {
 
-            _BrandWriteRepository = BrandWriteRepository;
-            _BrandReadRepository = BrandReadRepository;
+            _brandWriteRepository = brandWriteRepository;
+            _brandReadRepository = brandReadRepository;
         }
         public async Task<UpdateBrandCommandResponse> Handle(UpdateBrandCommandRequest request, CancellationToken cancellationToken)
         {
-            var Brand = await _BrandReadRepository.GetByIdAsync(request.Id);
-            if (Brand == null)
+            var brand = await _brandReadRepository.GetByIdAsync(request.Id);
+            if (brand == null)
             {
                 return new UpdateBrandCommandResponse
                 {
                     Success = false,
-                    Message = "Brand not found"
+                    Message = "Brand is not found"
                 };
             }
 
@@ -41,16 +41,16 @@ namespace Application.Features.Commands.BrandCommands.UpdateBrand
                 };
             }
 
-            Brand.Name = request.Name ?? Brand.Name;
+            brand.Name = request.Name ?? brand.Name;
 
-            _BrandWriteRepository.Update(Brand);
+            _brandWriteRepository.Update(brand);
 
-            await _BrandWriteRepository.SaveAsync();
+            await _brandWriteRepository.SaveAsync();
 
             return new UpdateBrandCommandResponse
             {
                 Success = true,
-                Message = "Brand updated successfully"
+                Message = "Brand is updated successfully"
             };
         }
 

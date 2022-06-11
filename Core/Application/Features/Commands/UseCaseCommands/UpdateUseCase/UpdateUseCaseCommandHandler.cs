@@ -11,24 +11,24 @@ namespace Application.Features.Commands.UseCaseCommands.UpdateUseCase
 {
     public class UpdateUseCaseCommandHandler : IRequestHandler<UpdateUseCaseCommandRequest, UpdateUseCaseCommandResponse>
     {
-        private readonly IUseCaseReadRepository _UseCaseReadRepository;
-        private readonly IUseCaseWriteRepository _UseCaseWriteRepository;
+        private readonly IUseCaseReadRepository _useCaseReadRepository;
+        private readonly IUseCaseWriteRepository _useCaseWriteRepository;
 
-        public UpdateUseCaseCommandHandler(IUseCaseWriteRepository UseCaseWriteRepository, IUseCaseReadRepository UseCaseReadRepository)
+        public UpdateUseCaseCommandHandler(IUseCaseWriteRepository useCaseWriteRepository, IUseCaseReadRepository useCaseReadRepository)
         {
 
-            _UseCaseWriteRepository = UseCaseWriteRepository;
-            _UseCaseReadRepository = UseCaseReadRepository;
+            _useCaseWriteRepository = useCaseWriteRepository;
+            _useCaseReadRepository = useCaseReadRepository;
         }
         public async Task<UpdateUseCaseCommandResponse> Handle(UpdateUseCaseCommandRequest request, CancellationToken cancellationToken)
         {
-            var UseCase = await _UseCaseReadRepository.GetByIdAsync(request.Id);
-            if (UseCase == null)
+            var useCase = await _useCaseReadRepository.GetByIdAsync(request.Id);
+            if (useCase == null)
             {
                 return new UpdateUseCaseCommandResponse
                 {
                     Success = false,
-                    Message = "UseCase not found"
+                    Message = "UseCase is not found"
                 };
             }
 
@@ -41,16 +41,16 @@ namespace Application.Features.Commands.UseCaseCommands.UpdateUseCase
                 };
             }
 
-            UseCase.Name = request.Name ?? UseCase.Name;
+            useCase.Name = request.Name ?? useCase.Name;
 
-            _UseCaseWriteRepository.Update(UseCase);
+            _useCaseWriteRepository.Update(useCase);
 
-            await _UseCaseWriteRepository.SaveAsync();
+            await _useCaseWriteRepository.SaveAsync();
 
             return new UpdateUseCaseCommandResponse
             {
                 Success = true,
-                Message = "UseCase updated successfully"
+                Message = "UseCase is updated successfully"
             };
         }
 

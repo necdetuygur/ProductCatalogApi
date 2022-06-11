@@ -12,19 +12,19 @@ namespace Application.Features.Commands.ProductCommands.CreateProduct
 {
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, CreateProductCommandResponse>
     {
-        private readonly IProductWriteRepository _ProductWriteRepository;
-        private readonly IProductReadRepository _ProductReadRepository;
+        private readonly IProductWriteRepository _productWriteRepository;
+        private readonly IProductReadRepository _productReadRepository;
 
-        public CreateProductCommandHandler(IProductWriteRepository ProductWriteRepository, IProductReadRepository ProductReadRepository)
+        public CreateProductCommandHandler(IProductWriteRepository productWriteRepository, IProductReadRepository productReadRepository)
         {
-            _ProductWriteRepository = ProductWriteRepository;
-            _ProductReadRepository = ProductReadRepository;
+            _productWriteRepository = productWriteRepository;
+            _productReadRepository = productReadRepository;
         }
         public async Task<CreateProductCommandResponse> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
 
             var id = Guid.NewGuid();
-            Product Product = new Product
+            Product product = new Product
             {
                 Id = id,
                 Name = request.Name,
@@ -40,11 +40,11 @@ namespace Application.Features.Commands.ProductCommands.CreateProduct
                 UserId = request.UserId,
             };
 
-            var result = await _ProductWriteRepository.AddAsync(Product);
+            var result = await _productWriteRepository.AddAsync(product);
 
-            await _ProductWriteRepository.SaveAsync();//== 1 ? true : false;
+            await _productWriteRepository.SaveAsync();//== 1 ? true : false;
 
-            return new CreateProductCommandResponse { Success = result, Message = result ? "Product created successfully" : "Product creation failed" };
+            return new CreateProductCommandResponse { Success = result, Message = result ? "Product is created successfully" : "Product creation is failed" };
         }
     }
 }

@@ -11,19 +11,19 @@ namespace Application.Features.Commands.UserCommands.DeleteUser
 {
     public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommandRequest, DeleteUserCommandResponse>
     {
-        private readonly IUserWriteRepository _UserWriteRepository;
-        private readonly IUserReadRepository _UserReadRepository;
+        private readonly IUserWriteRepository _userWriteRepository;
+        private readonly IUserReadRepository _userReadRepository;
 
-        public DeleteUserCommandHandler(IUserWriteRepository orderWriteRepository, IUserReadRepository orderReadRepository)
+        public DeleteUserCommandHandler(IUserWriteRepository userWriteRepository, IUserReadRepository userReadRepository)
         {
-            _UserWriteRepository = orderWriteRepository;
-            _UserReadRepository = orderReadRepository;
+            _userWriteRepository = userWriteRepository;
+            _userReadRepository = userReadRepository;
         }
         public async Task<DeleteUserCommandResponse> Handle(DeleteUserCommandRequest request, CancellationToken cancellationToken)
         {
-            var User = await _UserReadRepository.GetByIdAsync(request.Id);
+            var user = await _userReadRepository.GetByIdAsync(request.Id);
 
-            if (User is null)
+            if (user is null)
             {
                 return new DeleteUserCommandResponse
                 {
@@ -32,9 +32,9 @@ namespace Application.Features.Commands.UserCommands.DeleteUser
                 };
             }
 
-            _UserWriteRepository.Remove(User);
+            _userWriteRepository.Remove(user);
 
-            var result = await _UserWriteRepository.SaveAsync() == 1 ? true : false;
+            var result = await _userWriteRepository.SaveAsync() == 1 ? true : false;
 
             return new DeleteUserCommandResponse
             {
