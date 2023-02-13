@@ -15,7 +15,7 @@ path = Path.Combine(Directory.GetCurrentDirectory());
 #endif
                 configurationManager.SetBasePath(path);
                 configurationManager.AddJsonFile("appsettings.json");
-                return configurationManager.GetConnectionString("MicrosoftSqlServer");
+                return configurationManager.GetConnectionString("SqliteDatabase");
             }
         }
     }

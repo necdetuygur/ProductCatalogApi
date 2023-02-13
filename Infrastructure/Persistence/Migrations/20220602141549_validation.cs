@@ -176,7 +176,7 @@ namespace Persistence.Migrations
                 maxLength: 20,
                 nullable: false,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
+                oldType: "nvarchar(250)");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
@@ -185,7 +185,7 @@ namespace Persistence.Migrations
                 maxLength: 100,
                 nullable: false,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
+                oldType: "nvarchar(250)");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Description",
@@ -194,7 +194,7 @@ namespace Persistence.Migrations
                 maxLength: 500,
                 nullable: false,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
+                oldType: "nvarchar(250)");
 
             migrationBuilder.InsertData(
                 table: "Brands",
@@ -422,7 +422,7 @@ namespace Persistence.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Password",
                 table: "Users",
-                type: "nvarchar(max)",
+                type: "nvarchar(250)",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(20)",
@@ -431,7 +431,7 @@ namespace Persistence.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Products",
-                type: "nvarchar(max)",
+                type: "nvarchar(250)",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(100)",
@@ -440,7 +440,7 @@ namespace Persistence.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "Description",
                 table: "Products",
-                type: "nvarchar(max)",
+                type: "nvarchar(250)",
                 nullable: false,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(500)",

@@ -22,7 +22,8 @@ namespace Persistence
     {
         public static void AddPersistenceServices(this IServiceCollection services)
         {
-            services.AddDbContext<ProjectDbContext>(opt => opt.UseSqlServer(Configuration.ConnectionString));
+            // services.AddDbContext<ProjectDbContext>(opt => opt.UseSqlServer(Configuration.ConnectionString));
+            services.AddDbContext<ProjectDbContext>(opt => opt.UseSqlite(Configuration.ConnectionString));
 
             // User
             services.AddScoped<IUserReadRepository, UserReadRepository>();
